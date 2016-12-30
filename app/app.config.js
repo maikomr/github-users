@@ -16,6 +16,9 @@ config(['$locationProvider' ,'$routeProvider',
     when('/users/:username', {
       template: '<user-detail></user-detail>'
     }).
+    when('/users/:username/repos', {
+      template: '<repository-list></repository-list>'
+    }).
     otherwise('/users');
   }
 ]);

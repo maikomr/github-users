@@ -1,0 +1,14 @@
+<div class="container infinite-scroll" when-scrolled="loadMore()">
+    <h2>Repositories</h2>
+    <div class="card" ng-repeat="repo in repos">
+        <p>Name: {{repo.name}}</p>
+        <p>URL: {{repo.url}}</p>
+        <p>Default branch: {{repo.default_branch}}</p>
+        <p>Language: {{repo.language}}</p>
+        <p ng-show="repo.has_issues">Open Issues: {{repo.open_issues_count}}</p>
+        <p>Forks: {{repo.forks_count}}</p>
+        <p ng-show="repo.has_wiki">
+            <a href="{{repo.html_url + '/wiki'}}">Wiki</>
+        </p>
+    </div>
+</div>
