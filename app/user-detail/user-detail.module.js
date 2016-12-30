@@ -3,5 +3,6 @@
  */
 angular.module('userDetail', [
   'ngRoute',
-  'core.user'
+  'core.user',
+  'core.tabs'
 ]);
