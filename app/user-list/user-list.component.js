@@ -42,7 +42,14 @@ function UserListController($scope, $element, $attrs, $http) {
   };
 
   $scope.loadCard = function(user) {
-    console.log(user);
+    var url = 'https://api.github.com/users/' + user.login;
+    $http.get(url).then(function(response) {
+      if (response.status === 200) {
+        var loadedUser = response.data;
+        loadedUser.loaded = true;
+        $scope.users[$scope.users.indexOf(user)] = loadedUser;
+      }
+    });
   };
 
   $scope.loadMore();
