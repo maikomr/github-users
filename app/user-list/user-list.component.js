@@ -14,7 +14,7 @@ const parsePaginationLinks = function(linkStr) {
   }, {});
 };
 
-function UserListController($scope, $element, $attrs, $http) {
+function UserListController($scope, $http) {
   $scope.users = [];
   $scope.next = null;
   var loading = false;
