@@ -5,14 +5,23 @@
     <title>GitHub Users</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="core/img-loading.js"></script>
+    <script src="app.js"></script>
+    <script src="app.config.js"></script>
+    <script src="core/when-scrolled.js"></script>
+    <script src="core/user/user.module.js"></script>
+    <script src="core/user/user.service.js"></script>
+    <script src="user-detail/user-detail.module.js"></script>
+    <script src="user-detail/user-detail.component.js"></script>
+    <script src="user-list/user-list.module.js"></script>
+    <script src="user-list/user-list.component.js"></script>
 </head>
 <body>
-<user-list></user-list>
-<script src="bower_components/angular/angular.js"></script>
-<script src="core/img-loading.js"></script>
-<script src="core/when-scrolled.js"></script>
-<script src="user-list/user-list.module.js"></script>
-<script src="user-list/user-list.component.js"></script>
-<script src="app.js"></script>
+<div class="view-container">
+    <div ng-view class="view-frame"></div>
+</div>
 </body>
 </html>

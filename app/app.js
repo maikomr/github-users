@@ -1,4 +1,4 @@
 /**
  * Created by maiko on 30/12/2016.
  */
-angular.module('usersGitHubApp', ['userList']);
+angular.module('usersGitHubApp', ['ngRoute', 'userDetail', 'userList']);
