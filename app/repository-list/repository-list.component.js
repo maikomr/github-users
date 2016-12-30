@@ -9,7 +9,7 @@ function RepositoryListController($http, $routeParams, $scope) {
   var loading = false;
 
   $scope.loadMoreRepos = function () {
-    if ($scope.next != $scope.previous) {
+    if ($scope.next && $scope != $scope.previous) {
       if (!loading) {
         loading = true;
         $http.get($scope.next).then(function(response) {
@@ -17,8 +17,8 @@ function RepositoryListController($http, $routeParams, $scope) {
             $scope.repos = $scope.repos.concat(response.data);
             const paginationHeader = response.headers('Link');
             const pagination = parsePaginationLinks(paginationHeader);
-            $scope.next = pagination['next'];
             $scope.previous = $scope.next;
+            $scope.next = pagination['next'];
             loading = false;
           }
         }, function(error) {

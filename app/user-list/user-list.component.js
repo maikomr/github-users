@@ -16,28 +16,27 @@ const parsePaginationLinks = function(linkStr) {
 
 function UserListController($scope, $http) {
   $scope.users = [];
-  $scope.next = null;
+  $scope.previous = null;
+  $scope.next = 'https://api.github.com/users';
   var loading = false;
 
   $scope.loadMore = function() {
-    if (!loading) {
-      loading = true;
-      var url = 'https://api.github.com/users';
-      if ($scope.next) {
-        url = $scope.next;
+    if ($scope.next && $scope != $scope.previous) {
+      if (!loading) {
+        loading = true;
+        $http.get($scope.next).then(function (response) {
+          if (response.status === 200) {
+            $scope.users = $scope.users.concat(response.data);
+            const paginationHeader = response.headers('Link');
+            const pagination = parsePaginationLinks(paginationHeader);
+            $scope.previous = $scope.next;
+            $scope.next = pagination['next'];
+            loading = false;
+          }
+        }, function (error) {
+          throw Error(error.statusText);
+        });
       }
-      $http.get(url).then(function(response) {
-        if (response.status === 200) {
-          $scope.users = $scope.users.concat(response.data);
-          const paginationHeader = response.headers('Link');
-          const pagination = parsePaginationLinks(paginationHeader);
-          $scope.next = pagination['next'];
-          console.log($scope.next);
-          loading = false;
-        }
-      }, function(error) {
-        throw Error(error.statusText);
-      });
     }
   };
 
