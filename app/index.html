@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app="usersGitHubApp">
+<head>
+    <meta charset="utf-8">
+    <title>GitHub Users</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+</head>
+<body ng-controller="UserListController">
+<div class="container infinite-scroll" when-scrolled="loadMore()">
+    <h2>GitHub Users</h2>
+    <ul>
+        <li ng-repeat="user in users">
+            <span>{{user.id}} </span>
+            <p>{{user.login}}</p>
+        </li>
+    </ul>
+</div>
+<script src="bower_components/angular/angular.js"></script>
+<script src="app.js"></script>
+<script src="user-list/user-list.js"></script>
+</body>
+</html>
