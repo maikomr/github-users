@@ -1,3 +1,12 @@
-<div>
-    <p>This is the user page for {{$ctrl.user.name}}</p>
+<div class="user-detail">
+    <div class="img-wrapper loading">
+        <img ng-src="{{$ctrl.user.avatar_url}}" onload="imageLoaded(this)" >
+    </div>
+    <div class="info">
+        <p>{{$ctrl.user.name}}</p>
+        <p>{{$ctrl.user.login}}</p>
+        <p>{{$ctrl.user.company}}</p>
+        <p>{{$ctrl.user.location}}</p>
+        <p>{{$ctrl.user.email}}</p>
+    </div>
 </div>

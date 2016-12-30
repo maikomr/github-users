@@ -4,7 +4,7 @@
         <div class="img-wrapper loading">
             <img ng-src="{{user.avatar_url}}" onload="imageLoaded(this)" >
         </div>
-        <div class="user-card-info">
+        <div class="info">
             <p ng-show="user.loaded">{{user.name}}</p>
             <p><a href="#!/users/{{user.login}}">{{user.login}}</a></p>
             <p ng-show="user.loaded">{{user.company}}</p>
