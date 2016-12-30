@@ -8,7 +8,7 @@ function RepositoryListController($http, $routeParams, $scope) {
   $scope.next = 'https://api.github.com/users/'+ $routeParams.username + '/repos';
   var loading = false;
 
-  $scope.loadMore = function () {
+  $scope.loadMoreRepos = function () {
     if ($scope.next != $scope.previous) {
       if (!loading) {
         loading = true;
@@ -18,6 +18,7 @@ function RepositoryListController($http, $routeParams, $scope) {
             const paginationHeader = response.headers('Link');
             const pagination = parsePaginationLinks(paginationHeader);
             $scope.next = pagination['next'];
+            $scope.previous = $scope.next;
             loading = false;
           }
         }, function(error) {
@@ -26,7 +27,7 @@ function RepositoryListController($http, $routeParams, $scope) {
       }
     }
   };
-  $scope.loadMore();
+  $scope.loadMoreRepos();
 }
 
 angular.
