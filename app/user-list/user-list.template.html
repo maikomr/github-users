@@ -1,0 +1,12 @@
+<div class="container infinite-scroll" when-scrolled="loadMore()">
+    <h2>GitHub Users</h2>
+    <div class="user-card" ng-repeat="user in users">
+        <div class="img-wrapper">
+            <img ng-src="{{user.avatar_url}}" onload="imageLoaded(this)" >
+        </div>
+        <div class="user-card-info">
+        <p>{{user.login}}</p>
+        <p ng-click="loadCard(user)">More...</p>
+        </div>
+    </div>
+</div>

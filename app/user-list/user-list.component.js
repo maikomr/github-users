@@ -1,3 +1,6 @@
+/**
+ * Created by maiko on 30/12/2016.
+ */
 const parsePaginationLinks = function(linkStr) {
   return linkStr.split(',').map(function(rel) {
     return rel.split(';').map(function(current, index) {
@@ -11,7 +14,7 @@ const parsePaginationLinks = function(linkStr) {
   }, {});
 };
 
-usersGitHubApp.controller('UserListController', ['$scope', '$http', function($scope, $http) {
+function UserListController($scope, $element, $attrs, $http) {
   $scope.users = [];
   $scope.next = null;
   var loading = false;
@@ -37,4 +40,15 @@ usersGitHubApp.controller('UserListController', ['$scope', '$http', function($sc
       });
     }
   };
-}]);
+
+  $scope.loadCard = function(user) {
+    console.log(user);
+  };
+
+  $scope.loadMore();
+}
+
+angular.module('userList').component('userList', {
+  templateUrl: 'user-list/user-list.template.html',
+  controller: UserListController
+});
