@@ -1,23 +1,34 @@
-<div class="container infinite-scroll" infinite-scroll="loadMore()">
+<md-content layout-padding infinite-scroll="loadMoreRepos()">
     <h2>GitHub Users</h2>
-    <div class="user-card" ng-repeat="user in users">
-        <div class="user-card-top">
-            <div class="img-wrapper loading">
-                <img ng-src="{{user.avatar_url}}" onload="imageLoaded(this)" >
-            </div>
-            <div class="info">
-                <p><a href="#!/users/{{user.login}}"><strong>{{user.login}}</strong></a></p>
-                <p ng-hide="user.loaded" ng-click="loadCard(user)">More...</p>
-                <p ng-show="user.loaded">{{user.name}}</p>
-                <p ng-show="user.loaded">{{user.company}}</p>
-                <p ng-show="user.loaded">{{user.location}}</p>
-                <p ng-show="user.loaded">{{user.email}}</p>
-            </div>
-        </div>
-        <div class="user-card-bottom">
-            <a ng-show="user.loaded" href="#!/users/{{user.login}}/repos">Repos</a>
-            <span ng-show="user.loaded">Followers: {{user.followers}}</span>
-            <span ng-show="user.loaded">Following: {{user.following}}</span>
-        </div>
-    </div>
-</div>
+    <md-grid-list
+            md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+            md-row-height="4:3" md-gutter="6px" md-gutter-gt-sm="4px">
+        <md-grid-tile ng-repeat="user in users">
+            <md-card class="card">
+                <md-card-header>
+                    <md-card-avatar class="img-wrapper">
+                        <img class="md-user-avatar" ng-src="{{user.avatar_url}}" onload="imageLoaded(this)" >
+                    </md-card-avatar>
+                    <md-card-header-text layout="row" layout-align="space-between">
+                        <span ng-show="user.loaded" class="md-title">{{user.name}}</span>
+                        <span class="md-subhead">
+                            <a href="#!/users/{{user.login}}">{{user.login}}</a>
+                        </span>
+                        <span ng-hide="user.loaded" ng-click="loadCard(user)">More...</span>
+                    </md-card-header-text>
+                </md-card-header>
+                <md-card-title layout="column" layout-align="center end">
+                    <span class="md-subhead" ng-show="user.loaded">{{user.name}}</span>
+                    <span class="md-subhead" ng-show="user.loaded">{{user.company}}</span>
+                    <span class="md-subhead" ng-show="user.loaded">{{user.location}}</span>
+                    <span class="md-subhead" ng-show="user.loaded">{{user.email}}</span>
+                    <a class="md-subhead" ng-show="user.loaded" href="#!/users/{{user.login}}/repos">View repos</a>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="space-between">
+                    <span ng-show="user.loaded">Followers: {{user.followers}}</span>
+                    <span ng-show="user.loaded">Following: {{user.following}}</span>
+                </md-card-actions>
+            </md-card>
+        </md-grid-tile>
+    </md-grid-list>
+</md-content>
