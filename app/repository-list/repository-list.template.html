@@ -1,14 +1,33 @@
-<div class="container infinite-scroll" infinite-scroll="loadMoreRepos()">
+<md-content layout-padding infinite-scroll="loadMoreRepos()">
     <h2>Repositories</h2>
-    <div class="card" ng-repeat="repo in repos">
-        <p>Name: {{repo.name}}</p>
-        <p>URL: <a href="{{repo.html_url}}">{{repo.html_url}}</a></p>
-        <p>Default branch: {{repo.default_branch}}</p>
-        <p>Language: {{repo.language}}</p>
-        <p ng-show="repo.has_issues">Open Issues: {{repo.open_issues_count}}</p>
-        <p>Forks: {{repo.forks_count}}</p>
-        <p ng-show="repo.has_wiki">
-            <a href="{{repo.html_url + '/wiki'}}">Wiki</>
-        </p>
-    </div>
-</div>
+    <md-grid-list
+            md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+            md-row-height="4:3" md-gutter="6px" md-gutter-gt-sm="4px">
+        <md-grid-tile ng-repeat="repo in repos">
+            <md-card class="repo-card">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">
+                            <a href="{{repo.html_url}}">{{repo.name}}</a>
+                        </span>
+                        <span class="md-subhead">Default branch: {{repo.default_branch}}</span>
+                        <p layout="column" layout-align="center end">
+                            <span><a href="{{repo.html_url + '/wiki'}}">Wiki</a></span>
+                            <span>Language: {{repo.language}}</span>
+                            <span>Forks: {{repo.forks_count}}</span>
+                            <span ng-show="repo.has_issues">
+                            Open Issues: {{repo.open_issues_count}}
+                            </span>
+                        </p>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-footer>
+                    <span>Forks: {{repo.forks_count}}</span>
+                    <span ng-show="repo.has_issues">
+                    Open Issues: {{repo.open_issues_count}}
+                </span>
+                </md-card-footer>
+            </md-card>
+        </md-grid-tile>
+    </md-grid-list>
+</md-content>
