@@ -1,20 +1,11 @@
 a {
-    color: inherit;
+    color: #4078c0;
     text-decoration: inherit;
 }
 
-.repo-card {
+.card {
     width: 400px;
     height: 200px;
-}
-
-.infinite-scroll {
-    max-height: 100%;
-    overflow: auto;
-}
-
-.user-card-top {
-    height: 120px;
 }
 
 .user-detail {
@@ -23,65 +14,14 @@ a {
     padding: 30px;
 }
 
-.user-card {
-    width: 300px;
-    height: 150px;
-    float: left;
-    margin: 10px;
-    border: solid 1px;
-}
-
-.info {
-    display: inline;
-    text-align: right;
-}
-
-.user-card .info p {
-    margin: 0;
-    padding: 0;
-}
-
-.img-wrapper {
-    background-image: url("images/default_gituser.png");
-    position: relative;
-    display: inline;
-    float: left;
-    overflow: hidden;
-}
-
-.user-detail .img-wrapper {
-    background-size: 300px 300px;
-    width: 300px;
-    height: 300px;
-}
-
-.user-card .img-wrapper {
-    background-size: 100px 100px;
-    width: 100px;
-    height: 100px;
-}
-
 .img-wrapper img {
-    float: left;
-    top: 0;
-    opacity: 0;
-}
-
-.user-card .img-wrapper img {
-    width: 100px;
-    height: 100px;
-}
-
-.img-wrapper.loaded img {
-    opacity: 1;
-}
-
-.img-wrapper img {
-    float: left;
-    top: 0;
     opacity: 0;
     -webkit-transition: opacity 150ms;
     -moz-transition: opacity 150ms;
     -ms-transition: opacity 150ms;
     transition: opacity 150ms;
+}
+
+.img-wrapper.loaded img {
+    opacity: 1;
 }
