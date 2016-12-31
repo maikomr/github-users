@@ -1,0 +1,22 @@
+<div class="container infinite-scroll" when-scrolled="$ctrl.loadMore()">
+    <div class="user-card" ng-repeat="user in $ctrl.users">
+        <div class="user-card-top">
+            <div class="img-wrapper loading">
+                <img ng-src="{{user.avatar_url}}" onload="imageLoaded(this)" >
+            </div>
+            <div class="info">
+                <p><a href="#!/users/{{user.login}}"><strong>{{user.login}}</strong></a></p>
+                <p ng-hide="user.loaded" ng-click="loadCard(user)">More...</p>
+                <p ng-show="user.loaded">{{user.name}}</p>
+                <p ng-show="user.loaded">{{user.company}}</p>
+                <p ng-show="user.loaded">{{user.location}}</p>
+                <p ng-show="user.loaded">{{user.email}}</p>
+            </div>
+        </div>
+        <div class="user-card-bottom">
+            <a ng-show="user.loaded" href="#!/users/{{user.login}}/repos">Repos</a>
+            <span ng-show="user.loaded">Followers: {{user.followers}}</span>
+            <span ng-show="user.loaded">Following: {{user.following}}</span>
+        </div>
+    </div>
+</div>

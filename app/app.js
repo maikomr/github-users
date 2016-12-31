@@ -6,5 +6,6 @@ angular.module('usersGitHubApp', [
   'whenScrolled',
   'userDetail',
   'userList',
-  'repositoryList'
+  'repositoryList',
+  'followerList'
 ]);
