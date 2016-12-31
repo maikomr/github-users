@@ -3,6 +3,7 @@
  */
 angular.module('usersGitHubApp', [
   'ngRoute',
+  'ngMaterial',
   'infinite-scroll',
   'userDetail',
   'userList',
