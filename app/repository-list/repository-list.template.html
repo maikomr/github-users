@@ -2,7 +2,7 @@
     <h2>Repositories</h2>
     <div class="card" ng-repeat="repo in repos">
         <p>Name: {{repo.name}}</p>
-        <p>URL: {{repo.url}}</p>
+        <p>URL: <a href="{{repo.html_url}}">{{repo.html_url}}</a></p>
         <p>Default branch: {{repo.default_branch}}</p>
         <p>Language: {{repo.language}}</p>
         <p ng-show="repo.has_issues">Open Issues: {{repo.open_issues_count}}</p>
