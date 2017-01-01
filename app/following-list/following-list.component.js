@@ -16,10 +16,12 @@ function FollowingListController($routeParams, $http) {
           if (response.status === 200) {
             console.log('loading more following users');
             self.users = self.users.concat(response.data);
-            const paginationHeader = response.headers('Link');
-            const pagination = parsePaginationLinks(paginationHeader);
             self.previous = self.next;
-            self.next = pagination['next'];
+            const paginationHeader = response.headers('Link');
+            if (paginationHeader) {
+              const pagination = parsePaginationLinks(paginationHeader);
+              self.next = pagination['next'];
+            }
             loading = false;
           }
         });

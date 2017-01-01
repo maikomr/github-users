@@ -15,10 +15,12 @@ function RepositoryListController($http, $routeParams, $scope) {
         $http.get($scope.next).then(function(response) {
           if (response.status === 200) {
             $scope.repos = $scope.repos.concat(response.data);
-            const paginationHeader = response.headers('Link');
-            const pagination = parsePaginationLinks(paginationHeader);
             $scope.previous = $scope.next;
-            $scope.next = pagination['next'];
+            const paginationHeader = response.headers('Link');
+            if (paginationHeader) {
+              const pagination = parsePaginationLinks(paginationHeader);
+              $scope.next = pagination['next'];
+            }
             loading = false;
           }
         }, function(error) {
