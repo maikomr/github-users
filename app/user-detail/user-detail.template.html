@@ -8,13 +8,13 @@
             </md-card-title-media>
             <md-card-title-text layout="column" layout-align="none end">
                 <span class="md-headline">{{$ctrl.user.name}}</span>
-                <span class="md-headline">
+                <span class="md-headline" ng-show="$ctrl.user.company">
                     {{$ctrl.user.company}} <i class="material-icons">business_center</i>
                 </span>
-                <span class="md-headline">
+                <span class="md-headline" ng-show="$ctrl.user.location">
                     {{$ctrl.user.location}} <i class="material-icons">location_on</i>
                 </span>
-                <span class="md-headline">
+                <span class="md-headline" ng-show="$ctrl.user.email">
                     {{$ctrl.user.email}} <i class="material-icons">email</i>
                 </span>
             </md-card-title-text>
