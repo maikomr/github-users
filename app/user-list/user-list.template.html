@@ -5,9 +5,11 @@
             md-row-height="4:3" md-gutter="6px" md-gutter-gt-sm="4px">
         <md-grid-tile ng-repeat="user in users">
             <md-card class="card">
-                <md-card-header>
-                    <md-card-avatar class="img-wrapper">
-                        <img class="md-user-avatar" ng-src="{{user.avatar_url}}" onload="imageLoaded(this)" >
+                <md-card-header layout="row" layout-align="none center">
+                    <md-card-avatar>
+                        <div class="img-wrapper">
+                          <img class="md-user-avatar" ng-src="{{user.avatar_url}}" onload="imageLoaded(this)">
+                        </div>
                     </md-card-avatar>
                     <md-card-header-text layout="row" layout-align="space-between">
                         <span ng-show="user.loaded" class="md-title">{{user.name}}</span>
