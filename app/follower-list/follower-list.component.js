@@ -33,6 +33,6 @@ function FollowerListController($routeParams, $http) {
 
 angular.module('followerList', []).
   component('followerList', {
-    templateUrl: 'follower-list/follower-list.template.html',
+    templateUrl: 'user-list/user-list.template.html',
     controller: ['$routeParams', '$http', FollowerListController]
 });

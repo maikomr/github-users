@@ -14,24 +14,26 @@ const parsePaginationLinks = function(linkStr) {
   }, {});
 };
 
-function UserListController($scope, $http) {
-  $scope.users = [];
-  $scope.previous = null;
-  $scope.next = 'https://api.github.com/users';
+function UserListController($http) {
+  var self = this;
+  self.users = [];
+  self.previous = null;
+  self.next = 'https://api.github.com/users';
   var loading = false;
 
-  $scope.loadMore = function() {
-    if ($scope.next && $scope != $scope.previous) {
+  self.loadMore = function() {
+    if (self.next && self != self.previous) {
       if (!loading) {
         loading = true;
-        $http.get($scope.next).then(function (response) {
+        $http.get(self.next).then(function (response) {
           if (response.status === 200) {
-            $scope.users = $scope.users.concat(response.data);
-            $scope.previous = $scope.next;
+            console.log('loading more users');
+            self.users = self.users.concat(response.data);
+            self.previous = self.next;
             const paginationHeader = response.headers('Link');
             if (paginationHeader) {
               const pagination = parsePaginationLinks(paginationHeader);
-              $scope.next = pagination['next'];
+              self.next = pagination['next'];
             }
             loading = false;
           }
@@ -42,18 +44,18 @@ function UserListController($scope, $http) {
     }
   };
 
-  $scope.loadCard = function(user) {
+  self.loadCard = function(user) {
     var url = 'https://api.github.com/users/' + user.login;
     $http.get(url).then(function(response) {
       if (response.status === 200) {
         var loadedUser = response.data;
         loadedUser.loaded = true;
-        $scope.users[$scope.users.indexOf(user)] = loadedUser;
+        self.users[self.users.indexOf(user)] = loadedUser;
       }
     });
   };
 
-  $scope.loadMore();
+  self.loadMore();
 }
 
 angular.module('userList').component('userList', {

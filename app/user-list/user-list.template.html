@@ -1,9 +1,8 @@
-<md-content layout-padding infinite-scroll="loadMore()">
-    <h2>GitHub Users</h2>
+<md-content layout-padding infinite-scroll="$ctrl.loadMore()">
     <md-grid-list
             md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
             md-row-height="4:3" md-gutter="6px" md-gutter-gt-sm="4px">
-        <md-grid-tile ng-repeat="user in users">
+        <md-grid-tile ng-repeat="user in $ctrl.users">
             <md-card class="card">
                 <md-card-title>
                     <md-card-title-media>
@@ -15,7 +14,7 @@
                         <span class="md-title">
                             <a href="#!/users/{{user.login}}">{{user.login}}</a>
                         </span>
-                        <span class="md-subhead" ng-hide="user.loaded" ng-click="loadCard(user)">
+                        <span class="md-subhead" ng-hide="user.loaded" ng-click="$ctrl.loadCard(user)">
                             More...
                         </span>
                         <span class="md-subhead" ng-show="user.loaded">
