@@ -11,8 +11,12 @@
                             <a href="{{repo.html_url}}">{{repo.name}}</a>
                         </span>
                         <span class="md-subhead">Default branch: {{repo.default_branch}}</span>
-                        <span>Language: {{repo.language}}</span>
-                        <span><a href="{{repo.html_url + '/wiki'}}">Wiki</a></span>
+                        <span class="md-subhead" ng-show="repo.language">
+                            Language: {{repo.language}}
+                        </span>
+                        <span class="md-subhead" ng-show="repo.has_wiki">
+                            <a href="{{repo.html_url + '/wiki'}}">Wiki</a>
+                        </span>
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-footer layout="row" layout-align="space-between">
