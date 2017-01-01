@@ -14,7 +14,6 @@ function FollowingListController($routeParams, $http) {
         loading = true;
         $http.get(self.next).then(function (response) {
           if (response.status === 200) {
-            console.log('loading more following users');
             self.users = self.users.concat(response.data);
             self.previous = self.next;
             const paginationHeader = response.headers('Link');
@@ -28,6 +27,18 @@ function FollowingListController($routeParams, $http) {
       }
     }
   };
+
+  self.loadCard = function(user) {
+    var url = 'https://api.github.com/users/' + user.login;
+    $http.get(url).then(function(response) {
+      if (response.status === 200) {
+        var loadedUser = response.data;
+        loadedUser.loaded = true;
+        self.users[self.users.indexOf(user)] = loadedUser;
+      }
+    });
+  };
+
   self.loadMore();
 }
 

@@ -28,6 +28,17 @@ function FollowerListController($routeParams, $http) {
     }
   };
 
+  self.loadCard = function(user) {
+    var url = 'https://api.github.com/users/' + user.login;
+    $http.get(url).then(function(response) {
+      if (response.status === 200) {
+        var loadedUser = response.data;
+        loadedUser.loaded = true;
+        self.users[self.users.indexOf(user)] = loadedUser;
+      }
+    });
+  };
+
   self.loadMore();
 }
 

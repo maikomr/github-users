@@ -27,7 +27,6 @@ function UserListController($http) {
         loading = true;
         $http.get(self.next).then(function (response) {
           if (response.status === 200) {
-            console.log('loading more users');
             self.users = self.users.concat(response.data);
             self.previous = self.next;
             const paginationHeader = response.headers('Link');
