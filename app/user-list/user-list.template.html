@@ -5,29 +5,35 @@
             md-row-height="4:3" md-gutter="6px" md-gutter-gt-sm="4px">
         <md-grid-tile ng-repeat="user in users">
             <md-card class="card">
-                <md-card-header layout="row" layout-align="none center">
-                    <md-card-avatar>
-                        <div class="img-wrapper">
-                          <img class="md-user-avatar" ng-src="{{user.avatar_url}}" onload="imageLoaded(this)">
+                <md-card-title>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media img-wrapper" style="margin-right: 5px">
+                            <img class="md-user-avatar" ng-src="{{user.avatar_url}}" onload="imageLoaded(this)">
                         </div>
-                    </md-card-avatar>
-                    <md-card-header-text layout="row" layout-align="space-between">
+                    </md-card-title-media>
+                    <md-card-title-text layout="column" layout-align="none end">
                         <span class="md-title">
                             <a href="#!/users/{{user.login}}">{{user.login}}</a>
                         </span>
-                        <span class="md-title" ng-show="user.loaded">{{user.name}}</span>
-                        <span class="md-title" ng-hide="user.loaded" ng-click="loadCard(user)">More...</span>
-                    </md-card-header-text>
-                </md-card-header>
-                <md-card-title layout="column" layout-align="center end">
-                    <span class="md-subhead" ng-show="user.loaded">{{user.company}}</span>
-                    <span class="md-subhead" ng-show="user.loaded">{{user.location}}</span>
-                    <span class="md-subhead" ng-show="user.loaded">{{user.email}}</span>
+                        <span class="md-subhead" ng-hide="user.loaded" ng-click="loadCard(user)">
+                            More...
+                        </span>
+                        <span class="md-subhead" ng-show="user.loaded">
+                            <strong>{{user.name}}</strong>
+                        </span>
+                        <span class="md-subhead" ng-show="user.loaded">{{user.company}}</span>
+                        <span class="md-subhead" ng-show="user.loaded">{{user.location}}</span>
+                        <span class="md-subhead" ng-show="user.loaded">{{user.email}}</span>
+                    </md-card-title-text>
                 </md-card-title>
                 <md-card-footer layout="row" layout-align="space-between">
                     <a class="md-subhead" ng-show="user.loaded" href="#!/users/{{user.login}}/repos">Repos</a>
-                    <span ng-show="user.loaded">Followers: {{user.followers}}</span>
-                    <span ng-show="user.loaded">Following: {{user.following}}</span>
+                    <span class="md-subhead" ng-show="user.loaded">
+                        Followers: {{user.followers}}
+                    </span>
+                    <span class="md-subhead" ng-show="user.loaded">
+                        Following: {{user.following}}
+                    </span>
                 </md-card-footer>
             </md-card>
         </md-grid-tile>
