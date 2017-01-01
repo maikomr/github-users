@@ -19,9 +19,16 @@
                         <span class="md-title">
                             <a href="#!/users/{{user.login}}">{{user.login}}</a>
                         </span>
-                        <span class="md-subhead" ng-hide="user.loaded" ng-click="$ctrl.loadCard(user)">
-                            More...
-                        </span>
+                        <md-button href=""
+                                   ng-hide="user.loaded" ng-click="$ctrl.loadCard(user)"
+                                   title="View more..."
+                                   target="_blank"
+                                   aria-label="View more..."
+                                   class="md-icon-button launch md-subhead" >
+                            <md-icon>
+                                <i class="material-icons">expand_more</i>
+                            </md-icon>
+                        </md-button>
                         <span class="md-subhead" ng-show="user.loaded">
                             <strong>{{user.name}}</strong>
                         </span>
