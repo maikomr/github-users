@@ -1,17 +1,19 @@
 a {
-    color: #4078c0;
+    color: #455A64;
     text-decoration: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.accent-color {
+    color: #FE5151;
 }
 
 .card {
     width: 400px;
     height: 200px;
-}
-
-.user-detail {
-    width: 100%;
-    height: 400px;
-    padding: 30px;
 }
 
 .img-wrapper img {

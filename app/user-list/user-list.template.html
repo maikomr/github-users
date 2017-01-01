@@ -1,3 +1,8 @@
+<md-toolbar ng-show="$ctrl.hasTitle">
+    <div class="md-toolbar-tools">
+        <span>{{$ctrl.title}}</span>
+    </div>
+</md-toolbar>
 <md-content layout-padding infinite-scroll="$ctrl.loadMore()">
     <md-grid-list
             md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
@@ -28,10 +33,10 @@
                 <md-card-footer layout="row" layout-align="space-between">
                     <a class="md-subhead" ng-show="user.loaded" href="#!/users/{{user.login}}/repos">Repos</a>
                     <span class="md-subhead" ng-show="user.loaded">
-                        Followers: {{user.followers}}
+                        Followers: <span class="accent-color">{{user.followers}}</span>
                     </span>
                     <span class="md-subhead" ng-show="user.loaded">
-                        Following: {{user.following}}
+                        Following: <span class="accent-color">{{user.following}}</span>
                     </span>
                 </md-card-footer>
             </md-card>

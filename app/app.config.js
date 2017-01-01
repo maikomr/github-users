@@ -5,8 +5,12 @@
 
 angular.
 module('usersGitHubApp').
-config(['$locationProvider' ,'$routeProvider',
-  function config($locationProvider, $routeProvider) {
+config(['$locationProvider' ,'$routeProvider', '$mdThemingProvider',
+  function config($locationProvider, $routeProvider, $mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+    .primaryPalette('blue-grey')
+    .accentPalette('red');
+
     $locationProvider.hashPrefix('!');
 
     $routeProvider.

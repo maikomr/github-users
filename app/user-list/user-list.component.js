@@ -16,6 +16,8 @@ const parsePaginationLinks = function(linkStr) {
 
 function UserListController($http) {
   var self = this;
+  self.hasTitle = true;
+  self.title = 'GitHub Users';
   self.users = [];
   self.previous = null;
   self.next = 'https://api.github.com/users';
