@@ -11,21 +11,13 @@
                             <a href="{{repo.html_url}}">{{repo.name}}</a>
                         </span>
                         <span class="md-subhead">Default branch: {{repo.default_branch}}</span>
-                        <p layout="column" layout-align="center end">
-                            <span><a href="{{repo.html_url + '/wiki'}}">Wiki</a></span>
-                            <span>Language: {{repo.language}}</span>
-                            <span>Forks: {{repo.forks_count}}</span>
-                            <span ng-show="repo.has_issues">
-                            Open Issues: {{repo.open_issues_count}}
-                            </span>
-                        </p>
+                        <span>Language: {{repo.language}}</span>
+                        <span><a href="{{repo.html_url + '/wiki'}}">Wiki</a></span>
                     </md-card-title-text>
                 </md-card-title>
-                <md-card-footer>
+                <md-card-footer layout="row" layout-align="space-between">
                     <span>Forks: {{repo.forks_count}}</span>
-                    <span ng-show="repo.has_issues">
-                    Open Issues: {{repo.open_issues_count}}
-                </span>
+                    <span>Open Issues: {{repo.open_issues_count}}</span>
                 </md-card-footer>
             </md-card>
         </md-grid-tile>
