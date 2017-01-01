@@ -12,24 +12,23 @@
                         </div>
                     </md-card-avatar>
                     <md-card-header-text layout="row" layout-align="space-between">
-                        <span ng-show="user.loaded" class="md-title">{{user.name}}</span>
-                        <span class="md-subhead">
+                        <span class="md-title">
                             <a href="#!/users/{{user.login}}">{{user.login}}</a>
                         </span>
-                        <span ng-hide="user.loaded" ng-click="loadCard(user)">More...</span>
+                        <span class="md-title" ng-show="user.loaded">{{user.name}}</span>
+                        <span class="md-title" ng-hide="user.loaded" ng-click="loadCard(user)">More...</span>
                     </md-card-header-text>
                 </md-card-header>
                 <md-card-title layout="column" layout-align="center end">
-                    <span class="md-subhead" ng-show="user.loaded">{{user.name}}</span>
                     <span class="md-subhead" ng-show="user.loaded">{{user.company}}</span>
                     <span class="md-subhead" ng-show="user.loaded">{{user.location}}</span>
                     <span class="md-subhead" ng-show="user.loaded">{{user.email}}</span>
-                    <a class="md-subhead" ng-show="user.loaded" href="#!/users/{{user.login}}/repos">View repos</a>
                 </md-card-title>
-                <md-card-actions layout="row" layout-align="space-between">
+                <md-card-footer layout="row" layout-align="space-between">
+                    <a class="md-subhead" ng-show="user.loaded" href="#!/users/{{user.login}}/repos">Repos</a>
                     <span ng-show="user.loaded">Followers: {{user.followers}}</span>
                     <span ng-show="user.loaded">Following: {{user.following}}</span>
-                </md-card-actions>
+                </md-card-footer>
             </md-card>
         </md-grid-tile>
     </md-grid-list>
