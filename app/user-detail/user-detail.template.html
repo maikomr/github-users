@@ -1,21 +1,39 @@
-<div class="user-detail">
-    <div class="img-wrapper loading">
-        <img ng-src="{{$ctrl.user.avatar_url}}" onload="imageLoaded(this)" >
-    </div>
-    <div class="info">
-        <p>{{$ctrl.user.name}}</p>
-        <p>{{$ctrl.user.login}}</p>
-        <p>{{$ctrl.user.company}}</p>
-        <p>{{$ctrl.user.location}}</p>
-        <p>{{$ctrl.user.email}}</p>
-        <p><a href="#!/users/{{$ctrl.user.login}}/repos">Repos</a></p>
-    </div>
-</div>
-<tabs>
-    <pane title="Followers">
-        <follower-list></follower-list>
-    </pane>
-    <pane title="Following">
-        <following-list></following-list>
-    </pane>
-</tabs>
+<md-content layout-padding>
+    <md-card>
+        <md-card-title>
+            <md-card-title-media>
+                <div class="md-media-lg card-media img-wrapper" style="margin-right: 5px">
+                    <img class="md-user-avatar" ng-src="{{$ctrl.user.avatar_url}}" onload="imageLoaded(this)">
+                </div>
+            </md-card-title-media>
+            <md-card-title-text layout="column" layout-align="none end">
+                <span class="md-display-1">
+                    <a href="#!/users/{{$ctrl.user.login}}">{{$ctrl.user.login}}</a>
+                </span>
+                <span class="md-headline">
+                    <strong>{{$ctrl.user.name}}</strong>
+                </span>
+                <span class="md-headline">{{$ctrl.user.company}}</span>
+                <span class="md-headline">{{$ctrl.user.location}}</span>
+                <span class="md-headline">{{$ctrl.user.email}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-footer layout="row" layout-align="space-between">
+            <a class="md-headline" href="#!/users/{{$ctrl.user.login}}/repos">Repos</a>
+            <span class="md-headline">
+                Followers: {{$ctrl.user.followers}}
+            </span>
+            <span class="md-headline">
+                Following: {{$ctrl.user.following}}
+            </span>
+        </md-card-footer>
+    </md-card>
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Followers">
+            <follower-list></follower-list>
+        </md-tab>
+        <md-tab label="Following">
+            <following-list></following-list>
+        </md-tab>
+    </md-tabs>
+</md-content>
