@@ -3,6 +3,5 @@
  */
 angular.module('userDetail', [
   'ngRoute',
-  'ngResource',
-  'core.tabs'
+  'ngResource'
 ]);
